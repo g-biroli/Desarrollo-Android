@@ -1,6 +1,8 @@
 package com.example.inicio
 
 import android.os.Bundle
+import android.view.View
+import android.view.View.OnClickListener
 import android.widget.Button
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
@@ -9,7 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.inicio.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -17,37 +19,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.botonLogin.setOnClickListener { }
-        binding.editNombre.text
+        binding.botonLogin.setOnClickListener (this) //-> Creando la funcion del boton (BotonLogin)
+        binding.botonClear.setOnClickListener (this)
+
+
 
     }
-
-    override fun onStart() {
-        super.onStart()
-    }
-
-    override fun onResume() {
-        super.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-    }
-
-    override fun onStop() {
-        super.onStop()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putInt("Etiqueta Contador",8)
+    override fun onClick(v: View?) {
+        //Aciones por detras del boton
+        when(v?.id){
+            binding.botonLogin.id->{
+                //Acion del boton Login
+            }
+            binding.botonClear.id->{
+                // Acion del boton clear (Salir)
+            }
+        }
     }
 }
