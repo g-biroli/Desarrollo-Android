@@ -1,5 +1,6 @@
 package com.example.inicio
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
@@ -27,9 +28,12 @@ class MainActivity : AppCompatActivity(), OnClickListener {
     }
     override fun onClick(v: View?) {
         //Aciones por detras del boton
+        lateinit var intent: Intent
         when(v?.id){
             binding.botonLogin.id->{
                 //Acion del boton Login
+                val intent = Intent(applicationContext, HomeActivity::class.java);
+                startActivity(intent)
             }
             binding.botonClear.id->{
                 // Acion del boton clear (Salir)
