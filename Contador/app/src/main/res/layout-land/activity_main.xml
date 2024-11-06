@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- layout_width = como se comporta na largura
+     layout_height = como se comporta na altura
+     Todo los buttones que queremos que tengais alguna logica por detras,tiene que tener un identificador
+
+     -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_weight="0.5"
+        android:text="0"
+        android:textSize="40sp"
+        android:id="@+id/textoContador"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="0.5"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.33"
+            android:text="+"
+            android:textSize="40sp"
+            android:id="@+id/btnIncremento"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.33"
+            android:text="-"
+            android:textSize="40sp"
+            android:id="@+id/btnDecremento"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.33"
+            android:text="@string/restart"
+            android:textSize="40sp"
+            android:id="@+id/btnRestart"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

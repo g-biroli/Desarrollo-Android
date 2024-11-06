@@ -1,6 +1,7 @@
 package com.example.contador
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
 import androidx.activity.enableEdgeToEdge
@@ -23,6 +24,8 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         binding.textoContador.text = contador.toString()
         binding.btnIncremento.setOnClickListener(this)
         binding.btnDecremento.setOnClickListener(this)
+        binding.btnRestart?.setOnClickListener(this)
+        Log.v("ciclo_vida", "Ejecutando onCreate")
 
     }
 
@@ -37,6 +40,10 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                 //el contador se suma
                 contador--;
             }
+            binding.btnRestart?.id-> {
+                //reiniciar el resultado
+                contador = 0;
+            }
         }
         binding.textoContador.text = contador.toString()
     }
@@ -45,5 +52,25 @@ class MainActivity : AppCompatActivity(), OnClickListener {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt("contador", contador)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.v("ciclo_vida", "Ejecutando onDestroy")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.v("ciclo_vida","Ejecutando onResume")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.v("ciclo_vida", "Ejecutando onStop")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.v("ciclo_vida", "Ejecutando onRestart")
     }
 }
