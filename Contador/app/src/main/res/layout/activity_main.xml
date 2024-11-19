@@ -5,40 +5,217 @@
      Todo los buttones que queremos que tengais alguna logica por detras,tiene que tener un identificador
 
      -->
+    <!-- Profesor, tuve algunas dudas mientras hacia la actividad. Consejos para mejorar el código, añadir color a los botones. He utilizado herramientas como youtube, chatgpt para implementar en el código y ayudar principalmente en la parte logica -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#F5F5F5">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-    <ToggleButton
-        android:id="@+id/toggleSeleccion"
-        android:layout_width="0dp"
-        android:layout_weight="0.5"
-        android:layout_height="wrap_content" />
-
+    <!-- Introducir el numero para hacer la cuenta -->
     <TextView
-        android:id="@+id/textoToggle"
-        android:layout_width="0dp"
-        android:layout_weight="0.5"
-        android:gravity="center"
-        android:layout_height="wrap_content"
-        android:text="activado"
-        android:textSize="25sp"/>
-
-  </LinearLayout>
-    
-    <Button
+        android:id="@+id/display"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnComprobar"
-        />
-    
+        android:gravity="end"
+        android:textSize="32sp"
+        android:padding="16dp"
+        android:background="#EFEFEF"
+        android:text="0" />
+
+    <!-- Botones del contador -->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:columnCount="4"
+        android:layout_marginTop="16dp">
+
+        <!-- Cuentas Cientificas -->
+        <Button
+            android:id="@+id/btnSin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sin"
+            android:backgroundTint="#673AB7"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnCos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cos"
+            android:backgroundTint="#673AB7"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnTan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tan"
+            android:backgroundTint="#673AB7"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="log"
+            android:backgroundTint="#673AB7"
+            android:textColor="#FFFFFF"/>
+
+        <!-- Cuentas basicas -->
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:backgroundTint="#FF5722"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnSubtract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:backgroundTint="#FF5722"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnMultiply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*"
+            android:backgroundTint="#FF5722"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnDivide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"
+            android:backgroundTint="#FF5722"
+            android:textColor="#FFFFFF"/>
+
+    </GridLayout>
+
+    <!-- Numeros, =, . y C -->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:columnCount="4"
+        android:layout_marginTop="16dp">
+
+        <!-- Botões numéricos e ponto decimal -->
+        <Button
+            android:id="@+id/btn7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7"
+            android:backgroundTint="#9E9E9E"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btn8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8"
+            android:backgroundTint="#9E9E9E"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btn9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9"
+            android:backgroundTint="#9E9E9E"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C"
+            android:backgroundTint="#D32F2F"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:backgroundTint="#9E9E9E"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btn5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:backgroundTint="#9E9E9E"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btn6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6"
+            android:backgroundTint="#9E9E9E"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnEquals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="="
+            android:backgroundTint="#4CAF50"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:backgroundTint="#9E9E9E"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:backgroundTint="#9E9E9E"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:backgroundTint="#9E9E9E"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnDecimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="."
+            android:backgroundTint="#9E9E9E"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btn0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:backgroundTint="#9E9E9E"
+            android:textColor="#FFFFFF"/>
+
+    </GridLayout>
+
+</LinearLayout>
+
+
+

@@ -1,76 +1,128 @@
-package com.example.contador
-
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.view.View.OnClickListener
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.contador.databinding.ActivityMainBinding
-// Ponendo el metodo de ejecucion de button "OnClickListener"
-class MainActivity : AppCompatActivity(), OnClickListener {
+import com.example.contador.R
+import kotlin.math.*
 
-    private lateinit var binding: ActivityMainBinding
-    private var contador: Int = 0;
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    // Asocia grafico y logico "onCreate"
+    private lateinit var display: TextView
+    private var expression = "" // Guarda la expresión matemática
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        contador = savedInstanceState?.getInt("contador") ?: 0
-        binding.textoContador.text = contador.toString()
-        binding.btnIncremento.setOnClickListener(this)
-        binding.btnDecremento.setOnClickListener(this)
-        binding.btnRestart?.setOnClickListener(this)
-        Log.v("ciclo_vida", "Ejecutando onCreate")
 
-    }
+        try {
+            setContentView(R.layout.activity_main)
 
-    override fun onClick(v: View?) {
-        // Quien ha provocado el evento?
-        when(v?.id){
-            binding.btnIncremento.id->{
-                //el contador se resta
-                contador++;
-            }
-            binding.btnDecremento.id->{
-                //el contador se suma
-                contador--;
-            }
-            binding.btnRestart?.id-> {
-                //reiniciar el resultado
-                contador = 0;
-            }
+            // Inicializa el campo de texto para mostrar la expresion y el resultado
+            display = findViewById(R.id.display)
+
+            // Configura los listeners de clic para cada botón
+            configurarBotones()
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
-        binding.textoContador.text = contador.toString()
     }
 
-    // Funcion para guardar la variable y no la perder despues de cambiar la pantalla de  direccion.
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putInt("contador", contador)
+    // Metodo para configurar los listeners de cada botón de la calculadora
+    private fun configurarBotones() {
+        // Botones de operaciones avanzadas
+        findViewById<Button>(R.id.btnSin).setOnClickListener(this)
+        findViewById<Button>(R.id.btnCos).setOnClickListener(this)
+        findViewById<Button>(R.id.btnTan).setOnClickListener(this)
+        findViewById<Button>(R.id.btnLog).setOnClickListener(this)
+
+        // Botones de operaciones basicas
+        findViewById<Button>(R.id.btnAdd).setOnClickListener(this)
+        findViewById<Button>(R.id.btnSubtract).setOnClickListener(this)
+        findViewById<Button>(R.id.btnMultiply).setOnClickListener(this)
+        findViewById<Button>(R.id.btnDivide).setOnClickListener(this)
+
+        // Botones numericos
+        findViewById<Button>(R.id.btn0).setOnClickListener(this)
+        findViewById<Button>(R.id.btn1).setOnClickListener(this)
+        findViewById<Button>(R.id.btn2).setOnClickListener(this)
+        findViewById<Button>(R.id.btn3).setOnClickListener(this)
+        findViewById<Button>(R.id.btn4).setOnClickListener(this)
+        findViewById<Button>(R.id.btn5).setOnClickListener(this)
+        findViewById<Button>(R.id.btn6).setOnClickListener(this)
+        findViewById<Button>(R.id.btn7).setOnClickListener(this)
+        findViewById<Button>(R.id.btn8).setOnClickListener(this)
+        findViewById<Button>(R.id.btn9).setOnClickListener(this)
+        findViewById<Button>(R.id.btnDecimal).setOnClickListener(this)
+        findViewById<Button>(R.id.btnClear).setOnClickListener(this)
+        findViewById<Button>(R.id.btnEquals).setOnClickListener(this)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.v("ciclo_vida", "Ejecutando onDestroy")
+    // Metodo que maneja los eventos de clic para cada boton
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            // Operaciones avanzadas
+            R.id.btnSin -> agregarAExpresion("sin(")
+            R.id.btnCos -> agregarAExpresion("cos(")
+            R.id.btnTan -> agregarAExpresion("tan(")
+            R.id.btnLog -> agregarAExpresion("log(")
+
+            // Operaciones basicas
+            R.id.btnAdd -> agregarAExpresion("+")
+            R.id.btnSubtract -> agregarAExpresion("-")
+            R.id.btnMultiply -> agregarAExpresion("*")
+            R.id.btnDivide -> agregarAExpresion("/")
+
+            // Numeros y punto
+            R.id.btn0 -> agregarAExpresion("0")
+            R.id.btn1 -> agregarAExpresion("1")
+            R.id.btn2 -> agregarAExpresion("2")
+            R.id.btn3 -> agregarAExpresion("3")
+            R.id.btn4 -> agregarAExpresion("4")
+            R.id.btn5 -> agregarAExpresion("5")
+            R.id.btn6 -> agregarAExpresion("6")
+            R.id.btn7 -> agregarAExpresion("7")
+            R.id.btn8 -> agregarAExpresion("8")
+            R.id.btn9 -> agregarAExpresion("9")
+            R.id.btnDecimal -> agregarAExpresion(".")
+
+            // limpia la expresion
+            R.id.btnClear -> {
+                expression = ""
+                display.text = "0"
+            }
+
+            // calcula el resultado de la expresion
+            R.id.btnEquals -> calcularResultado()
+        }
     }
 
-    override fun onResume() {
-        super.onResume()
-        Log.v("ciclo_vida","Ejecutando onResume")
+    // funcion para agregar texto a la expresion y mostrarlo en el campo de texto
+    private fun agregarAExpresion(valor: String) {
+        expression += valor
+        display.text = expression
     }
 
-    override fun onStop() {
-        super.onStop()
-        Log.v("ciclo_vida", "Ejecutando onStop")
+    // Función para calcular el resultado de la expression
+    private fun calcularResultado() {
+        try {
+            // Evalua la expresion ingresada y muestra el resultado
+            val resultado = evaluar(expression)
+            display.text = resultado.toString()
+            expression = resultado.toString() // actualiza la expresion con el resultado
+        } catch (e: Exception) {
+            display.text = "Error"
+            expression = ""
+        }
     }
 
-    override fun onRestart() {
-        super.onRestart()
-        Log.v("ciclo_vida", "Ejecutando onRestart")
+    // Función simplificada para evaluar expresiones con funciones científicas
+    private fun evaluar(expresion: String): Double {
+        return when {
+            "sin" in expresion -> sin(expresion.removePrefix("sin(").toDouble())
+            "cos" in expresion -> cos(expresion.removePrefix("cos(").toDouble())
+            "tan" in expresion -> tan(expresion.removePrefix("tan(").toDouble())
+            "log" in expresion -> log10(expresion.removePrefix("log(").toDouble())
+            else -> expresion.toDouble()
+        }
     }
 }
