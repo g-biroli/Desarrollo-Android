@@ -1,3 +1,4 @@
+package com.example.contador
 
 import android.os.Bundle
 import android.view.View
@@ -7,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.contador.R
 import kotlin.math.*
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+
+
+class MainActivityNueva : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var display: TextView
     private var expression = "" // Guarda la expresión matemática
