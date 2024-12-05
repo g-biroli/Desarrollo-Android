@@ -21,7 +21,7 @@ class MainActivityNueva : AppCompatActivity(), View.OnClickListener {
         try {
             setContentView(R.layout.activity_main)
 
-            // Inicializa el campo de texto para mostrar la expresion y el resultado
+            // Inicializa el campo de texto para mostrar la expresión y el resultado
             display = findViewById(R.id.display)
 
             // Configura los listeners de clic para cada botón
@@ -30,7 +30,6 @@ class MainActivityNueva : AppCompatActivity(), View.OnClickListener {
             e.printStackTrace()
         }
     }
-
     // Metodo para configurar los listeners de cada botón de la calculadora
     private fun configurarBotones() {
         // Botones de operaciones avanzadas
