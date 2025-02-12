@@ -83,8 +83,11 @@ dependencies {
         implementation("androidx.compose.material:material:1.4.3")
         implementation("androidx.compose.ui:ui:1.5.0")
         implementation("androidx.compose.foundation:foundation-layout:1.7.0")
-
-
+        implementation("io.ktor:ktor-client-core:2.0.3")
+        implementation("io.ktor:ktor-client-cio:2.0.3")
+        implementation("io.ktor:ktor-client-content-negotiation:2.0.3")
+        implementation("io.ktor:ktor-serialization-kotlinx-json:2.0.3")
+        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
     }
 
 }
