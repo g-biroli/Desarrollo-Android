@@ -60,6 +60,8 @@ dependencies {
     implementation(libs.androidx.foundation.layout.android)
     implementation(libs.androidx.foundation.layout.android)
     implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.monitor)
+    implementation(libs.androidx.junit.ktx)
     dependencies {
         implementation("androidx.core:core-ktx:1.12.0")
         implementation("androidx.appcompat:appcompat:1.6.1")
@@ -75,6 +77,13 @@ dependencies {
         implementation("androidx.compose.material3:material3:1.1.2")
         implementation("androidx.compose.ui:ui:1.7.0")
         implementation("io.coil-kt:coil-compose:2.2.2")
+        implementation("androidx.compose.material3:material3:1.1.2")
+        implementation("androidx.compose.material:material:1.4.3")
+        implementation("androidx.compose.material3:material3:1.2.0")
+        implementation("androidx.compose.material:material:1.4.3")
+        implementation("androidx.compose.ui:ui:1.5.0")
+        implementation("androidx.compose.foundation:foundation-layout:1.7.0")
+
 
     }
 

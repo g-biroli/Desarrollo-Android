@@ -6,7 +6,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.content.MediaType.Companion.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -14,7 +13,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -36,7 +35,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
+@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ActividadEvaluable2App() {
@@ -72,7 +71,7 @@ fun ProductoItem(producto: Producto) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .clickable { /* Adicionar ao carrinho */ },
+            .clickable { },
         elevation = 4.dp
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -82,9 +81,9 @@ fun ProductoItem(producto: Producto) {
                 modifier = Modifier.size(80.dp)
             )
             Column(modifier = Modifier.padding(8.dp)) {
-                Text(producto.title, style = MaterialTheme.typography.h6)
+                Text(producto.title, style = MaterialTheme.typography.h4)
                 Text("Precio: ${producto.price}€", style = MaterialTheme.typography.body1)
-                Button(onClick = { /* Adicionar ao carrinho */ }) {
+                Button(onClick = { }) {
                     Text("Añadir al carrito")
                 }
             }
