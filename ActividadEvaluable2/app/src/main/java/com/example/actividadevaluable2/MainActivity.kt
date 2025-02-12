@@ -21,7 +21,6 @@ import coil.compose.rememberAsyncImagePainter
 import com.example.actividadevaluable2.models.Producto
 import com.example.actividadevaluable2.network.ApiService
 
-// Lista compartilhada de produtos no carrinho
 val carrito = mutableStateListOf<Producto>()
 
 class MainActivity : ComponentActivity() {
@@ -39,7 +38,7 @@ fun ActividadEvaluable2App() {
     val context = LocalContext.current
     val productos = remember { mutableStateListOf<Producto>() }
 
-    // Carregar produtos da API
+    // Productos de la API
     LaunchedEffect(Unit) {
         productos.addAll(ApiService.obtenerProductos())
     }
@@ -96,7 +95,7 @@ fun ProductoItem(producto: Producto) {
                 Text(producto.title, style = MaterialTheme.typography.titleLarge)
                 Text("Precio: ${producto.price}€", style = MaterialTheme.typography.bodyMedium)
                 Button(onClick = {
-                    carrito.add(producto) // Adiciona produto ao carrinho
+                    carrito.add(producto) // producto <-> carrito
                 }) {
                     Text("Añadir al carrito")
                 }
