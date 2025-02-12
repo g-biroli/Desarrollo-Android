@@ -15,7 +15,6 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.*
 import androidx.compose.ui.unit.dp
 import com.example.actividadevaluable2.models.Producto
-import com.example.actividadevaluable2.viewmodel.CartViewModel
 import java.lang.reflect.Modifier
 
 class SecondActivity : ComponentActivity() {
